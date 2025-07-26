@@ -81,6 +81,9 @@ jupyter notebook
 
 Open `visualize_annotations_and_bounding_boxes.ipynb` and scroll through scans with bounding boxes and annotations overlaid.
 
+<img width="371" height="355" alt="Visual verification" src="https://github.com/user-attachments/assets/e93993ab-23eb-4093-be50-6c7fa531281a" />
+
+
 ### 6. Split dataset
 
 ```bash
