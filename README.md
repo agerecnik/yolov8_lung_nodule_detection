@@ -90,7 +90,7 @@ Open `visualize_annotations_and_bounding_boxes.ipynb` and scroll through scans w
 python split_datasets.py
 ```
 
-This creates training and validation sets with a balanced number of positive and negative examples.
+This creates training and validation sets with a balanced number of positive and negative examples. All positive and negative slices taken from the same CT series are put in either train or val dataset to prevent data leakage.
 
 To check class balance:
 
@@ -159,17 +159,14 @@ The LUNA16 challenge dataset is a subset of the larger LIDC-IDRI dataset. By inc
 - It would reduce overfitting and improve generalization, particularly for larger models like YOLOv8m and YOLOv8l.
     
 
-### 3. **Improved Dataset Splitting**
+### 3. **Improved Train and Validation Dataset Splitting**
 
-In the current implementation, the dataset is split to balance positive and negative slices, but it does not account for:
+In the current implementation, the dataset is split to balance positive and negative slices. All positive and negative slices taken from the same CT series are put in either train or val dataset to prevent data leakage, but it does not account for:
 
 - Nodule size (e.g., small vs. large)
     
-- Patient distribution (e.g., ensuring no data leakage across splits)
-    
 - Scan origin (some patients may have multiple series)
     
-
 A more robust stratified sampling strategy, possibly even patient-wise, could lead to more reliable validation results and better model generalization.
 
 ### 4. **Lung Region Segmentation (Preprocessing)**
